@@ -1,0 +1,15 @@
+# --- Python / Backend ---
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env              # CRITICAL: Never share your passwords!
+
+# --- Node / Frontend ---
+frontend/node_modules/
+frontend/dist/            # Compiled production files
+frontend/.env.local       # Frontend secrets if any
+
+# --- OS / IDE ---
+.DS_Store                 # macOS noise
+.vscode/                  # Personal VS Code settings
+*.log                     # Error logs
