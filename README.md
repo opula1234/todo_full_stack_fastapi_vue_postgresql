@@ -1,90 +1,156 @@
-📝 Fullstack Task Manager
-A high-performance Task Management application built with a FastAPI backend, PostgreSQL database, and Vue.js 3 frontend, all running natively in WSL (Ubuntu 22.04).
+# 📝 Fullstack Task Manager
 
-🏗️ Tech Stack
-Backend: Python 3.10+, FastAPI, SQLAlchemy (ORM)
+A high-performance Task Management application built with a **FastAPI** backend, **PostgreSQL** database, and **Vue.js 3** frontend — all running natively in WSL (Ubuntu 22.04).
 
-Database: PostgreSQL 14+
+---
 
-Frontend: Vue.js 3 (Composition API), Vite
+## 🏗️ Tech Stack
 
-Environment: Windows Subsystem for Linux (WSL2)
+| Layer | Technology |
+|---|---|
+| **Backend** | Python 3.10+, FastAPI, SQLAlchemy (ORM) |
+| **Database** | PostgreSQL 14+ |
+| **Frontend** | Vue.js 3 (Composition API), Vite |
+| **Environment** | Windows Subsystem for Linux (WSL2) |
 
-🛠️ Prerequisites
-Ensure you have the following installed in your Ubuntu terminal:
+---
 
-Python 3 & venv: sudo apt install python3-venv
+## 🛠️ Prerequisites
 
-Node.js & NPM: sudo apt install nodejs npm
+Ensure you have the following installed inside your **Ubuntu (WSL) terminal**:
 
-PostgreSQL: sudo apt install postgresql postgresql-contrib
+```bash
+# Python 3 & virtual environment support
+sudo apt install python3-venv
 
-🐘 1. Database Setup
-Start PostgreSQL service:
+# Node.js & NPM
+sudo apt install nodejs npm
 
-Bash
+# PostgreSQL
+sudo apt install postgresql postgresql-contrib
+```
+
+---
+
+## 🐘 1. Database Setup
+
+**Start the PostgreSQL service:**
+
+```bash
 sudo service postgresql start
-Create a dedicated user and database:
+```
 
-Bash
+**Create a dedicated user and database:**
+
+```bash
 sudo -u postgres psql
-# Inside psql:
+```
+
+Inside the `psql` shell:
+
+```sql
 CREATE USER balaji_dev WITH PASSWORD 'your_password';
 CREATE DATABASE my_app_db OWNER balaji_dev;
 \q
-🐍 2. Backend Installation & Run
-Navigate to backend folder:
+```
 
-Bash
+---
+
+## 🐍 2. Backend — Installation & Run
+
+**Navigate to the backend folder:**
+
+```bash
 cd backend
-Create and activate Virtual Environment:
+```
 
-Bash
+**Create and activate a virtual environment:**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-Install dependencies:
+```
 
-Bash
+**Install dependencies:**
+
+```bash
 pip install -r requirements.txt
-Configure Environment Variables:
-Create a .env file in the backend/ folder:
+```
 
-Plaintext
+**Configure environment variables:**
+
+Create a `.env` file inside the `backend/` folder:
+
+```env
 DATABASE_URL=postgresql://balaji_dev:your_password@localhost:5432/my_app_db
-Run the API:
+```
 
-Bash
+**Start the API server:**
+
+```bash
 uvicorn main:app --reload
-API Documentation available at: http://localhost:8000/docs
+```
 
-⚡ 3. Frontend Installation & Run
-Open a new terminal tab and navigate to frontend:
+> 📖 Interactive API docs available at: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-Bash
+---
+
+## ⚡ 3. Frontend — Installation & Run
+
+**Open a new terminal tab and navigate to the frontend folder:**
+
+```bash
 cd frontend
-Install NPM packages:
+```
 
-Bash
+**Install NPM packages:**
+
+```bash
 npm install
-Launch Dev Server:
+```
 
-Bash
+**Launch the development server:**
+
+```bash
 npm run dev
-Frontend available at: http://localhost:5173
+```
 
-🛡️ Security Notes
-The .env file is included in .gitignore to prevent leaking database credentials.
+> 🌐 Frontend available at: [http://localhost:5173](http://localhost:5173)
 
-CORS is configured in main.py to allow communication between the Vite dev server and the FastAPI backend.
+---
 
-📂 Project Structure
-Plaintext
+## 📂 Project Structure
+
+```
 my-app/
-├── backend/            # FastAPI Project
-│   ├── venv/           # Python Virtual Env
-│   ├── main.py         # API Routes & Logic
-│   ├── models.py       # SQLAlchemy Models
-│   └── database.py     # DB Connection Logic
-└── frontend/           # Vue.js Project
-    ├── src/            # Vue Components
-    └── package.json    # JS Dependencies
+├── backend/            # FastAPI project
+│   ├── venv/           # Python virtual environment
+│   ├── main.py         # API routes & logic
+│   ├── models.py       # SQLAlchemy models
+│   └── database.py     # Database connection logic
+└── frontend/           # Vue.js project
+    ├── src/            # Vue components & views
+    └── package.json    # JS dependencies
+```
+
+---
+
+## 🛡️ Security Notes
+
+- The `.env` file is listed in `.gitignore` to prevent accidental exposure of database credentials.
+- CORS is configured in `main.py` to allow communication between the Vite dev server (`localhost:5173`) and the FastAPI backend (`localhost:8000`).
+
+---
+
+## 🚀 Quick Start Summary
+
+```bash
+# 1. Start the database
+sudo service postgresql start
+
+# 2. Run the backend (in one terminal)
+cd backend && source venv/bin/activate && uvicorn main:app --reload
+
+# 3. Run the frontend (in another terminal)
+cd frontend && npm run dev
+```
